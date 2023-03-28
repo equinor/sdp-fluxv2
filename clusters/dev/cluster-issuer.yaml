@@ -4,6 +4,9 @@ kind: ClusterIssuer
 metadata:
   name: letsencrypt
 spec:
+  dependsOn:
+    - name: infrastructure
+      namespace: flux-system
   acme:
     # Replace the email address with your own contact email
     email: sdptools@StatoilSRM.onmicrosoft.com
