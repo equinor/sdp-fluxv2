@@ -5,6 +5,6 @@ resources:
   - infrastructure.yaml
   - apps.yaml
   - cluster-issuer.yaml
-  # - ../../infrastructure  # For testing
+  - ../../infrastructure
 patchesStrategicMerge:
   - ingress-nginx-patch.yaml
