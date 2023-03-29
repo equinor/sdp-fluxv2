@@ -8,8 +8,10 @@ spec:
   dependsOn:
     - name: cert-manager
   interval: 5m
+  timeout: 5m
   path: "./infrastructure/cert-manager/certs"
   prune: true
+  wait: true
   sourceRef:
     kind: GitRepository
     name: flux-repo
