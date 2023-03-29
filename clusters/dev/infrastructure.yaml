@@ -10,7 +10,7 @@ spec:
   timeout: 5m
   sourceRef:
     kind: GitRepository
-    name: flux-config-dev
-  path: ./infrastructure
+    name: flux-repo
+  path: "./infrastructure"
   prune: true
   wait: true

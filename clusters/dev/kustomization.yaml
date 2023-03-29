@@ -4,7 +4,6 @@ kind: Kustomization
 resources:
   - infrastructure.yaml
   - apps.yaml
-  - cluster-issuer.yaml
   - ../../infrastructure
 patchesStrategicMerge:
   - ingress-nginx-patch.yaml

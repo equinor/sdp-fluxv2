@@ -12,7 +12,7 @@ spec:
     - name: infrastructure
   sourceRef:
     kind: GitRepository
-    name: flux-config-dev
-  path: ./apps/dev
+    name: flux-repo
+  path: "./apps/dev"
   prune: true
   wait: true
