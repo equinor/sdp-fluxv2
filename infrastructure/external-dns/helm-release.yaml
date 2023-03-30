@@ -15,8 +15,8 @@ spec:
         name: external-dns
         namespace: external-dns
       interval: 12h
-  values:
-    provider: azure
+  # values:
+    # provider: azure
     # azure:
       # secretName: azure-dns-config-file
     # rbac:
