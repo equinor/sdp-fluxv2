@@ -8,4 +8,4 @@ spec:
   values:
     domainFilters: ["dev.sdp.equinor.com"]
     azure:
-      secretName: azure-dns-config-file
+      resourceGroup: sdp-bicep-dev
