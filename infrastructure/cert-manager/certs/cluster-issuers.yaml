@@ -20,7 +20,7 @@ metadata:
   name: letsencrypt-staging
 spec:
   acme:
-    email: user@example.com
+    email: sdptools@StatoilSRM.onmicrosoft.com
     server: https://acme-staging-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
       name: letsencrypt-nginx-staging
