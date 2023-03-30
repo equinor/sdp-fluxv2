@@ -14,3 +14,21 @@ spec:
   path: "./infrastructure"
   prune: true
   wait: true
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: infra-config
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: infrastructure
+  interval: 1h
+  retryInterval: 1m
+  timeout: 5m
+  sourceRef:
+    kind: GitRepository
+    name: flux-repo
+  path: "./clusters/dev/infra-config"
+  prune: true
+  wait: true
