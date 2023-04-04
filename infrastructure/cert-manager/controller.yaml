@@ -9,7 +9,11 @@ spec:
   timeout: 5m
   path: "./infrastructure/cert-manager/controller"
   prune: true
-  wait: true
   sourceRef:
     kind: GitRepository
     name: flux-repo
+  healthChecks:
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: cert-manager
+      namespace: cert-manager
