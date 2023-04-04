@@ -11,9 +11,6 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-repo
-  path: "./infrastructure"
+  path: "./clusters/dev/infra-config"
   prune: true
   wait: true
-  patches:
-    - path: infra-config
-  
