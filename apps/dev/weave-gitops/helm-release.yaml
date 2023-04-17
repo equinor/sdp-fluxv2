@@ -38,6 +38,7 @@ spec:
       annotations:
         kubernetes.io/ingress.class: nginx
         kubernetes.io/tls-acme: "true"
+        cert-manager.io/cluster-issuer: letsencrypt-nginx-staging
         external-dns.alpha.kubernetes.io/hostname: weave.dev.sdp.equinor.com
       hosts:
         - host: weave.dev.sdp.equinor.com
@@ -45,7 +46,6 @@ spec:
             - path: /
               pathType: Prefix
       tls:
-        - secretName: letsencrypt-nginx-staging
-          namespace: cert-manager
+        - secretName: weave-tls-staging
           hosts:
             - weave.dev.sdp.equinor.com
