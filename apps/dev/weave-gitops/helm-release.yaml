@@ -41,6 +41,9 @@ spec:
         external-dns.alpha.kubernetes.io/hostname: weave.dev.sdp.equinor.com
       hosts:
         - host: weave.dev.sdp.equinor.com
+          paths:
+            - path: /
+              pathType: Prefix
       tls:
         - secretName: letsencrypt-nginx-staging
           hosts:
