@@ -17,3 +17,7 @@ spec:
       interval: 12h
   values:
     installCRDs: true
+    ingressshim:
+      defaultIssuerName: letsencrypt
+      defaultIssuerKind: ClusterIssuer
+      defaultIssuerGroup: cert-manager.io
