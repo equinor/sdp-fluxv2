@@ -1,0 +1,127 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: gitlab
+  namespace: gitlab
+spec:
+  releaseName: gitlab
+  interval: 5m
+  chart:
+    spec:
+      chart: gitlab
+      version: 6.11.3
+      sourceRef:
+        kind: HelmRepository
+        name: gitlab
+        namespace: gitlab
+      interval: 12h
+  values:
+    certmanager:
+      install: false
+    gitlab:
+      webservice:
+        ingress:
+          tls:
+            secretName: gitlab-sdp-tls
+      gitaly:
+        persistence:
+          enabled: true
+          storageClass: "managed-premium-retain-expandable"
+          size: "512Gi"
+      toolbox:
+        persistence:
+          enabled: false
+          storageClass: "managed-premium"
+          size: "600Gi"
+        backups:
+          objectStorage:
+            backend: azure
+            config:
+              secret: gitlab-backup-storage
+              key: config
+    global:
+      edition: ce
+      appConfig:
+        cron_jobs:
+          # Flag stuck CI jobs as failed
+          stuck_ci_jobs_worker:
+            cron: "15 */2 * * *"
+          # Execute scheduled triggers
+          pipeline_schedule_worker:
+            cron: "19 */2 * * *"
+          # Remove expired build artifacts
+          expire_build_artifacts_worker:
+            cron: "50 */2 * * *"
+          # Stop expired environments
+          environment_auto_stop_cron_worker:
+            cron: "24 */2 * * *"
+          # Periodically run 'git fsck' on all repositories. If started more than
+          # once per hour you will have concurrent 'git fsck' jobs.
+          repository_check_worker:
+            cron: "20 */4 * * *"
+          # Archive live traces which have not been archived yet
+          ci_archive_traces_cron_worker:
+            cron: "17 */2 * * *"
+        omniauth:
+          enabled: true
+          allowSingleSignOn:
+            - saml
+          blockAutoCreatedUsers: false
+          autoLinkLdapUser: true
+          autoLinkSamlUser: true
+          autoSignInWithProvider: null
+          providers:
+            - secret: gitlab-azure-saml
+        object_store:
+          enabled: true
+          connection:
+            secret: gitlab-rails-storage
+            key: connection # Optional
+        backups:
+          bucket: gitlab-backup-storage
+          tmpBucket: gitlab-tmp-storage
+      registry:
+        bucket: gitlab-registry-storage
+      shell:
+        hostKeys:
+          secret: gitlab-ssh-keys
+      hosts:
+      ingress:
+        enabled: true
+        class: nginx
+        annotations:
+          kubernetes.io/tls-acme: true
+      minio:
+        enabled: false
+      psql:
+        database: gitlab
+        username:
+          secret: gitlab-psql-secret
+          key: username
+        password:
+          secret: gitlab-psql-secret
+          key: password
+    nginx-ingress:
+      enabled: false
+    postgresql:
+      enabled: false
+    registry:
+      bucket: gitlab-registry-storage
+      ingress:
+        tls:
+          enabled: true
+          secretName: gitlab-registry-tls
+        annotations:
+          kubernetes.io/tls-acme: "true"
+      storage:
+        secret: gitlab-registry-storage
+        key: config
+    gitlab-runner:
+      install: false
+      envVars:
+        - name: LISTEN_ADDRESS
+          value: :9252
+    gitlab-shell:
+      hostKeys:
+        secret: gitlab-ssh-keys
