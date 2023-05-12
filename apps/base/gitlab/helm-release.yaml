@@ -27,13 +27,9 @@ spec:
       gitaly:
         persistence:
           enabled: true
-          storageClass: "managed-premium-retain-expandable"
+          storageClass: "managed-csi-premium"
           size: "512Gi"
       toolbox:
-        persistence:
-          enabled: false
-          storageClass: "managed-premium"
-          size: "600Gi"
         backups:
           objectStorage:
             backend: azure
