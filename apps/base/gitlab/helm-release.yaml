@@ -93,9 +93,7 @@ spec:
         enabled: false
       psql:
         database: gitlab
-        username:
-          secret: gitlab-psql-secret
-          key: username
+        username: gitlab
         password:
           secret: gitlab-psql-secret
           key: password
