@@ -97,6 +97,22 @@ spec:
         password:
           secret: gitlab-psql-secret
           key: password
+      smtp:
+        enabled: true
+        address: mrrr.statoil.com
+        port: 25
+        user_name: gm_sds_rdi@equinor.com
+        password:
+          secret: gitlab-smtp-secret
+          key: password
+        authentication: "login"
+        starttls_auto: true
+        openssl_verify_mode: "peer"
+      email:
+        enabled: true
+        from: "gm_sds_rdi@equinor.com"
+        display_name: "GitLab Equinor"
+        reply_to: "noreply@equinor.com"
     nginx-ingress:
       enabled: false
     postgresql:
