@@ -102,7 +102,7 @@ spec:
     nginx-ingress:
       enabled: false
     postgresql:
-      enabled: false
+      install: false
     registry:
       bucket: gitlab-registry-storage
       ingress:
