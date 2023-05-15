@@ -36,6 +36,14 @@ spec:
             config:
               secret: gitlab-backup-storage
               key: config
+      migrations:
+        enabled: true
+        psql:
+          username: gitlab
+          database: gitlab
+          password:
+            secret: gitlab-psql-secret
+            key: password
     global:
       edition: ce
       appConfig:

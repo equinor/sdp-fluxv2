@@ -12,6 +12,9 @@ spec:
           annotations:
             kubernetes.io/tls-acme: "true"
             external-dns.alpha.kubernetes.io/hostname: gitlab.dev.sdpaks.equinor.com
+      migrations:
+        psql:
+          host: sdp-bicep-dev-psql14.postgres.database.azure.com
     global:
       psql:
         host: sdp-bicep-dev-psql14.postgres.database.azure.com
