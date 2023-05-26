@@ -5,30 +5,7 @@ metadata:
   name: weave-gitops
   namespace: flux-system
 spec:
-  interval: 1h
-  chart:
-    spec:
-      chart: weave-gitops
-      version: 4.0.19
-      sourceRef:
-        kind: HelmRepository
-        name: weave-gitops
-      interval: 12h
   values:
-    resources:
-      requests:
-        cpu: 100m
-        memory: 64Mi
-      limits:
-        cpu: 1
-        memory: 512Mi
-    securityContext:
-      capabilities:
-        drop:
-          - ALL
-      readOnlyRootFilesystem: true
-      runAsNonRoot: true
-      runAsUser: 1000
     adminUser:
       create: true
       username: admin
