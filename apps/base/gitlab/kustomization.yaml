@@ -5,5 +5,5 @@ resources:
   - namespace.yaml
   - helm-repo.yaml
   - helm-release.yaml
-  - secret-provider.yaml
   - secret-mount-pod.yaml
+  - gitlab-repo-pvc.yaml
