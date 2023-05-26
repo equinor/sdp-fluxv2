@@ -4,5 +4,4 @@ kind: Kustomization
 resources:
   - ../../../infrastructure
 patchesStrategicMerge:
-  - ingress-nginx-patch.yaml
   - external-dns-patch.yaml

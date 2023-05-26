@@ -21,3 +21,5 @@ spec:
         externalTrafficPolicy: Local
     admissionWebhooks:
       enabled: false
+    tcp:
+      "22": "gitlab/gitlab-gitlab-shell:22"
