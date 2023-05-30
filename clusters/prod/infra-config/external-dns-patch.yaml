@@ -1,0 +1,13 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: external-dns
+  namespace: external-dns
+spec:
+  values:
+    provider: azure
+    domainFilters: ["prod.sdpaks.equinor.com"]
+    azure:
+      resourceGroup: sdp-bicep-prod
+      userAssignedIdentityID: b1a28b94-8069-4ca0-80b6-27d3bf9eb2e3 # Kubelet MI
