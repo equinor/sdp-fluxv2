@@ -1,0 +1,24 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: gitlab
+  namespace: gitlab
+spec:
+  values:
+    gitlab:
+      migrations:
+        psql:
+          host: sdp-bicep-prod-psql14.postgres.database.azure.com
+    global:
+      psql:
+        host: sdp-bicep-prod-psql14.postgres.database.azure.com
+      hosts:
+        domain: prod.sdpaks.equinor.com
+        https: true
+        gitlab:
+          name: git.equinor.com
+        registry:
+          name: registry.prod.sdpaks.equinor.com
+      email:
+        display_name: "GitLab Equinor"
