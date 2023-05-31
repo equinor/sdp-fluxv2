@@ -6,6 +6,7 @@ metadata:
     pv.kubernetes.io/provisioned-by: kubernetes.io/azure-disk
     volumehelper.VolumeDynamicallyCreatedByKey: azure-disk-dynamic-provisioner
   name: gitlab-repository-expanded
+  namespace: gitlab
 spec:
   accessModes:
     - ReadWriteOnce
