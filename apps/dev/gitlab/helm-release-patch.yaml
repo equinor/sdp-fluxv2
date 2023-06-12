@@ -30,3 +30,5 @@ spec:
           name: registry.dev.sdpaks.equinor.com
       email:
         display_name: "Dev GitLab Equinor"
+      smtp:
+        enabled: false
