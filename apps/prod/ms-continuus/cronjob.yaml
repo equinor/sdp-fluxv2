@@ -6,7 +6,7 @@ metadata:
   labels:
     app: ms-continuus
 spec:
-  schedule: "0 11 * * *" # Run at 11:00 UTC every day
+  schedule: "15 18 * * 7" # Every Sunday at 18:15
   concurrencyPolicy: Forbid # No parallel jobs
   jobTemplate:
     spec:
@@ -21,7 +21,7 @@ spec:
                 - name: BLOB_CONTAINER
                   value: github-archives
                 - name: GITHUB_ORG
-                  value: Equinor-Playground
+                  value: equinor
                 - name: STORAGE_ACCOUNT_CON_STRING
                   valueFrom:
                     secretKeyRef:

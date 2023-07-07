@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - weave-gitops
   - gitlab
+  - ms-continuus
