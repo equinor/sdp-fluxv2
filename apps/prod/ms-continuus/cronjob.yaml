@@ -6,7 +6,7 @@ metadata:
   labels:
     app: ms-continuus
 spec:
-  schedule: "15 18 * * 7" # Every Sunday at 18:15
+  schedule: "15 18 * * 0" # Every Sunday at 18:15
   concurrencyPolicy: Forbid # No parallel jobs
   jobTemplate:
     spec:
