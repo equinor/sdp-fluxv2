@@ -15,20 +15,6 @@ spec:
         spec:
           containers:
             - name: ms-continuus
-              securityContext:
-                runAsUser: 10000
-                allowPrivilegeEscalation: false
-                readOnlyRootFilesystem: true
-                capabilities:
-                  drop:
-                    - ALL
-              resources:
-                requests:
-                  cpu: 250m
-                  memory: 256Mi
-                limits:
-                  cpu: 1
-                  memory: 1Gi
               image: ghcr.io/equinor/ms-continuus:main
               imagePullPolicy: Always
               env:
