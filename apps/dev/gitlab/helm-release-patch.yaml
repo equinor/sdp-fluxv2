@@ -7,7 +7,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: 6.11.13
+      version: 7.1.5
   values:
     gitlab:
       webservice:
